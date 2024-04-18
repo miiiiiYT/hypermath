@@ -12,10 +12,24 @@ pub trait Vector: Sized
     + AddAssign
     + Sub
     + SubAssign
+    + DotProduct
+    + CrossProduct
     + PartialEq
     + PartialOrd
     + Clone
     + Display
 {
     fn length(&self) -> Float;
+}
+
+pub trait DotProduct<Rhs = Self> {
+    type Output;
+
+    fn dot_product(self, rhs: Rhs) -> Self::Output;
+}
+
+pub trait CrossProduct<Rhs = Self> {
+    type Output;
+
+    fn cross_product(self, rhs: Rhs) -> Self::Output;
 }
