@@ -13,18 +13,20 @@ pub struct Vector3D {
     pub x: Float,
     pub y: Float,
     pub z: Float,
+    _priv: (),
 }
 
 impl Vector3D {
     pub fn new(x: Float, y: Float, z: Float) -> Self {
-        Self { x, y, z }
+        Self { x, y, z, _priv: () }
     }
 
     pub fn from_f64(x: f64, y: f64, z: f64) -> Self {
         Self {
             x: Float::with_val(F64_PRECISION, x),
             y: Float::with_val(F64_PRECISION, y),
-            z: Float::with_val(F64_PRECISION, z)
+            z: Float::with_val(F64_PRECISION, z),
+            _priv: ()
         }
     }
 
@@ -37,7 +39,8 @@ impl Vector3D {
         Ok(Self {
             x: Float::with_val(F64_PRECISION, vec[0]),
             y: Float::with_val(F64_PRECISION, vec[1]),
-            z: Float::with_val(F64_PRECISION, vec[2])
+            z: Float::with_val(F64_PRECISION, vec[2]),
+            _priv: ()
         })
     }
 }
@@ -57,3 +60,5 @@ impl Display for Vector3D {
         write!(f, "({}, {}, {})", self.x, self.y, self.z)
     }
 }
+
+impl Eq for Vector3D {}

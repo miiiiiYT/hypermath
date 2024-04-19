@@ -12,15 +12,16 @@ mod ops;
 pub struct Vector2D {
     pub x: Float,
     pub y: Float,
+    _priv: (),
 }
 
 impl Vector2D {
     pub fn new(x: Float, y: Float) -> Self {
-        Self { x, y }
+        Self { x, y, _priv: () }
     }
 
     pub fn from_f64(x: f64, y: f64) -> Self {
-        Self {x: Float::with_val(F64_PRECISION, x), y: Float::with_val(F64_PRECISION, y) }
+        Self {x: Float::with_val(F64_PRECISION, x), y: Float::with_val(F64_PRECISION, y), _priv: () }
     }
 
     /// Creates a new `Vector2D` from a `Vec`, truncating excess values.
@@ -29,7 +30,7 @@ impl Vector2D {
             return Err(ErrorKind::InvalidInput)
         }
 
-        Ok(Self { x: Float::with_val(F64_PRECISION, vec[0]), y: Float::with_val(F64_PRECISION, vec[1]) })
+        Ok(Self { x: Float::with_val(F64_PRECISION, vec[0]), y: Float::with_val(F64_PRECISION, vec[1]), _priv: () })
     }
 }
 
@@ -62,3 +63,5 @@ impl TryFrom<Vec<f64>> for Vector2D {
         self::Vector2D::from_vec(value)
     }
 }
+
+impl Eq for Vector2D {}
