@@ -1,7 +1,7 @@
 mod vector2d;
 mod vector3d;
 
-use std::{fmt::Display, ops::{Add, AddAssign, Sub, SubAssign}};
+use std::{fmt::{Debug, Display}, ops::{Add, AddAssign, Sub, SubAssign}};
 
 use rug::Float;
 pub use vector2d::Vector2D;
@@ -18,6 +18,7 @@ pub trait Vector: Sized
     + PartialOrd
     + Clone
     + Display
+    + Debug
 {
     fn length(&self) -> Float;
     fn as_vec(&self) -> Vec<Float>;
