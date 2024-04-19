@@ -20,6 +20,7 @@ pub trait Vector: Sized
     + Display
 {
     fn length(&self) -> Float;
+    fn as_vec(&self) -> Vec<Float>;
 }
 
 pub trait DotProduct<Rhs = Self> {

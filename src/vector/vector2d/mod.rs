@@ -37,6 +37,10 @@ impl Vector for Vector2D {
     fn length(&self) -> Float {
         (self.x.clone().pow(2_i32) + self.y.clone().pow(2_i32)).sqrt()
     }
+
+    fn as_vec(&self) -> Vec<Float> {
+       vec![self.x.clone(), self.y.clone()] 
+    }
 }
 
 impl Display for Vector2D {
