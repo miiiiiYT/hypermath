@@ -1,8 +1,10 @@
 mod point2d;
+mod point3d;
 
 use std::fmt::{Debug, Display};
 
 pub use point2d::Point2D;
+pub use point3d::Point3D;
 use rug::Float;
 
 pub trait Point: Sized
@@ -18,10 +20,10 @@ pub trait Point: Sized
     fn midpoint(&self, other: &Self) -> Self;
 
     /// Returns a new `Point` translated by `amt` while keeping the old point.
-    fn translate(&self, amt: (Float, Float)) -> Self;
+    fn translate(&self, amt: Vec<Float>) -> Option<Self>;
 
     /// Translates `self` by `amt`, mutating the original.
-    fn translate_mut(&mut self, amt: (Float, Float));
+    fn translate_mut(&mut self, amt: Vec<Float>) -> bool;
 
     /// Scales `self` by `scale`, returning a new `Point`.
     fn scale(&self, scale: Float) -> Self;

@@ -1,10 +1,10 @@
 use std::fmt::Display;
 
-use rug::{ops::Pow, Float};
+use rug::Float;
 
 use crate::{vector::Vector2D, F64_PRECISION};
 
-use super::Point;
+mod ops;
 
 #[derive(Debug, PartialEq)]
 pub struct Point2D {
@@ -31,39 +31,6 @@ impl Point2D {
             other.x - point.x,
             other.y - point.y,
         )
-    }
-}
-
-impl Point for Point2D {
-    fn distance(&self, other: &Self) -> Float {
-        Float::with_val(F64_PRECISION,
-            ((other.x.clone() - self.x.clone()).pow(2_i32) + (other.y.clone() - self.x.clone()).pow(2_i32)).sqrt()
-        )
-    }
-
-    fn midpoint(&self, other: &Self) -> Self {
-        Self::new(
-            (self.x.clone() + other.x.clone()) / 2,
-            (self.y.clone() + other.y.clone()) / 2
-        )
-    }
-
-    fn translate(&self, amt: (Float, Float)) -> Self {
-        Self::new(self.x.clone() + amt.0, self.y.clone() + amt.1)
-    }
-
-    fn translate_mut(&mut self, amt: (Float, Float)) {
-        self.x += amt.0;
-        self.y += amt.1;
-    }
-
-    fn scale(&self, scale: Float) -> Self {
-        Self::new(self.x.clone() * scale.clone(), self.y.clone() * scale)
-    }
-
-    fn scale_mut(&mut self, scale: Float) {
-        self.x *= scale.clone();
-        self.y *= scale;
     }
 }
 
