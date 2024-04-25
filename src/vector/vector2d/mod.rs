@@ -65,3 +65,44 @@ impl TryFrom<Vec<f64>> for Vector2D {
 }
 
 impl Eq for Vector2D {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Ensure [`Vector2D::from_f64()`] behaves the same way as [`Vector2D::new()`].
+    fn new_eq_from_f64() {
+        assert_eq!(
+            Vector2D::new(Float::with_val(F64_PRECISION, 2.4), Float::with_val(F64_PRECISION, -7.4)),
+            Vector2D::from_f64(2.4, -7.4),
+        )
+    }
+
+    #[test]
+    /// Ensure [`Vector2D::from_vec()`] behaves the same way as [`Vector2D::new()`].
+    fn new_eq_from_vec() {
+        assert_eq!(
+            Vector2D::new(Float::with_val(F64_PRECISION, 2.4), Float::with_val(F64_PRECISION, -7.4)),
+            Vector2D::from_vec(vec![2.4, -7.4]).unwrap(),
+        )
+    }
+
+    #[test]
+    /// Ensure supplying too little values fails
+    fn fail_on_too_little_values() {
+        assert!(Vector2D::from_vec(vec![1.0]).is_err())
+    }
+
+    #[test]
+    fn ensure_proper_value_storage() {
+        assert_eq!(
+            Vector2D::new(Float::with_val(F64_PRECISION, 2.3), Float::with_val(F64_PRECISION, -6.23)).x,
+            Float::with_val(F64_PRECISION, 2.3)
+        );
+        assert_eq!(
+            Vector2D::new(Float::with_val(F64_PRECISION, 2.3), Float::with_val(F64_PRECISION, -6.23)).y,
+            Float::with_val(F64_PRECISION, -6.23)
+        )
+    }
+}
