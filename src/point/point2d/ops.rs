@@ -46,4 +46,8 @@ impl Point for Point2D {
         self.x *= scale.clone();
         self.y *= scale;
     }
+
+    fn to_string(&self, accuracy: usize) -> String {
+        format!("({x:.prec$}, {y:.prec$})", x = self.x, y = self.y, prec = accuracy)
+    }
 }

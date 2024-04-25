@@ -30,4 +30,6 @@ pub trait Point: Sized
 
     /// Scales `self` by `scale`, mutating the original.
     fn scale_mut(&mut self, scale: Float);
+
+    fn to_string(&self, accuracy: usize) -> String;
 }
