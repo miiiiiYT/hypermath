@@ -55,7 +55,7 @@ impl Point for Point3D {
         self.z *= scale;
     }
 
-    fn to_string(&self, accuracy: usize) -> String {
+    fn truncate(&self, accuracy: usize) -> String {
         format!("({x:.prec$}, {y:.prec$}, {z:.prec$})", x = self.x, y = self.y, z = self.z, prec = accuracy)
     }
 }

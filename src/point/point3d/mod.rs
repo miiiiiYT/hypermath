@@ -6,6 +6,18 @@ use rug::Float;
 
 use crate::{vector::Vector3D, F64_PRECISION};
 
+/// A struct describing a geometrical Point in 3D space.
+/// # Examples
+/// ```rust
+/// use hypermath::point::Point3D;
+/// use hypermath::prelude::*;
+/// 
+/// // `Point3D::from_f64()` is used here instead of `new()`, as `new()` takes `rug::Float` as arguments.
+/// // To make your code more readable, please use `from_f64()` where you're able to.
+/// let point: Point3D = Point3D::from_f64(2.0, 1.0, -1.2);
+/// println!("{}", point.truncate(2));
+/// ```
+/// Prints `(2.0, 1.0, -1.2)`
 #[derive(Debug, PartialEq)]
 pub struct Point3D {
     pub x: Float,

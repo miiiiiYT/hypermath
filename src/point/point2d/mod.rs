@@ -6,6 +6,18 @@ use crate::{vector::Vector2D, F64_PRECISION};
 
 mod ops;
 
+/// A struct describing a geometrical Point in 2D space.
+/// # Examples
+/// ```rust
+/// use hypermath::point::Point2D;
+/// use hypermath::prelude::*;
+/// 
+/// // `Point2D::from_f64()` is used here instead of `new()`, as `new()` takes `rug::Float` as arguments.
+/// // To make your code more readable, please use `from_f64()` where you're able to.
+/// let point: Point2D = Point2D::from_f64(3.141, 1,41423);
+/// println!("{}", point);
+/// ```
+/// Prints `(3.1410000000000000, 1.1414230000000001)`
 #[derive(Debug, PartialEq)]
 pub struct Point2D {
     pub x: Float,
