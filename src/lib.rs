@@ -1,5 +1,6 @@
 pub mod vector;
 pub mod point;
 pub mod dimension;
+pub mod prelude;
 
-const F64_PRECISION: u32 = 53;
+pub const F64_PRECISION: u32 = 53;
