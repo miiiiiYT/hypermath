@@ -26,10 +26,19 @@ impl Point2D {
         }
     }
 
-    pub fn create_vector2d(point: Self, other: Self) -> Vector2D {
+    /// Taking two `Point2D`s as reference and returning a resulting vector.
+    pub fn create_vector2d(point: &Self, other: &Self) -> Vector2D {
         Vector2D::new(
-            other.x - point.x,
-            other.y - point.y,
+            other.x.clone() - point.x.clone(),
+            other.y.clone() - point.y.clone(),
+        )
+    }
+
+    /// Creating a vector from `self` to `other`, consuming both.
+    pub fn create_vector2d_self(self, other: Self) -> Vector2D {
+        Vector2D::new(
+            other.x - self.x,
+            other.y - self.y,
         )
     }
 }
