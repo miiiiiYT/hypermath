@@ -1,4 +1,4 @@
-use std::ops::{Add, AddAssign, Sub, SubAssign};
+use std::ops::{Add, AddAssign, Mul, MulAssign, Sub, SubAssign};
 
 use rug::Float;
 
@@ -33,6 +33,21 @@ impl SubAssign for Vector2D {
     fn sub_assign(&mut self, rhs: Self) {
         self.x -= rhs.x;
         self.y -= rhs.y;
+    }
+}
+
+impl Mul<Float> for Vector2D {
+    type Output = Vector2D;
+
+    fn mul(self, rhs: Float) -> Self::Output {
+        Self::new(self.x.clone() * rhs, self.y.clone() * rhs)
+    }
+}
+
+impl MulAssign<Float> for Vector2D {
+    fn mul_assign(&mut self, rhs: Float) {
+        self.x *= rhs;
+        self.y *= rhs;
     }
 }
 

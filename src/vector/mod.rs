@@ -1,7 +1,7 @@
 mod vector2d;
 mod vector3d;
 
-use std::{fmt::{Debug, Display}, ops::{Add, AddAssign, Sub, SubAssign}};
+use std::{fmt::{Debug, Display}, ops::{Add, AddAssign, Mul, MulAssign, Sub, SubAssign}};
 
 use rug::Float;
 pub use vector2d::Vector2D;
@@ -12,6 +12,8 @@ pub trait Vector: Sized
     + AddAssign
     + Sub
     + SubAssign
+    + Mul<Float>
+    + MulAssign<Float>
     + DotProduct
     + CrossProduct
     + ToPoint
