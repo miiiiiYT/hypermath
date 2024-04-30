@@ -4,6 +4,8 @@ use rug::Float;
 
 mod line3d;
 
+pub use line3d::Line3D;
+
 pub trait Line: Sized
     + Collapse
     + Clone
