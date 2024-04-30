@@ -1,6 +1,6 @@
 use rug::{ops::Pow, Float};
 
-use crate::{point::Point, F64_PRECISION};
+use crate::{point::{Point, ToPositionVector}, vector::Vector2D, F64_PRECISION};
 
 use super::Point2D;
 
@@ -49,5 +49,13 @@ impl Point for Point2D {
 
     fn truncate(&self, accuracy: usize) -> String {
         format!("({x:.prec$}, {y:.prec$})", x = self.x, y = self.y, prec = accuracy)
+    }
+}
+
+impl ToPositionVector for Point2D {
+    type Return = Vector2D;
+
+    fn to_position_vector(&self) -> Self::Return {
+        Vector2D::new(self.x.clone(), self.y.clone())
     }
 }

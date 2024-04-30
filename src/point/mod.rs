@@ -23,6 +23,7 @@ pub trait Point: Sized
     + Eq
     + Display
     + Debug
+    + ToPositionVector
 {
     /// Returns the distance between `self` and `other` as a `Float`.
     fn distance(&self, other: &Self) -> Float;
@@ -58,4 +59,12 @@ pub trait Point: Sized
     /// (3.141000, 1.141423)
     /// ```
     fn truncate(&self, accuracy: usize) -> String;
+}
+
+pub trait ToPositionVector {
+    /// The appropriate vector type. On a 2D point, this should be a 2D vector and so on.
+    type Return;
+
+    /// Turns `Self` into a position vector, returns the appropriate vector type.
+    fn to_position_vector(&self) -> Self::Return;
 }
