@@ -22,19 +22,17 @@ mod ops;
 pub struct Point2D {
     pub x: Float,
     pub y: Float,
-    _priv: (),
 }
 
 impl Point2D {
     pub fn new(x: Float, y: Float) -> Self {
-        Self { x, y, _priv: () }
+        Self { x, y }
     }
 
     pub fn from_f64(x: f64, y: f64) -> Self {
         Self {
             x: Float::with_val(F64_PRECISION, x),
             y: Float::with_val(F64_PRECISION, y),
-            _priv: ()
         }
     }
 }

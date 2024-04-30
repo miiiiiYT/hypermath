@@ -23,12 +23,11 @@ pub struct Point3D {
     pub x: Float,
     pub y: Float,
     pub z: Float,
-    _priv: (),
 }
 
 impl Point3D {
     pub fn new(x: Float, y: Float, z: Float) -> Self {
-        Self { x, y, z, _priv: () }
+        Self { x, y, z }
     }
 
     pub fn from_f64(x: f64, y: f64, z: f64) -> Self {
@@ -36,7 +35,6 @@ impl Point3D {
             x: Float::with_val(F64_PRECISION, x),
             y: Float::with_val(F64_PRECISION, y),
             z: Float::with_val(F64_PRECISION, z),
-            _priv: (),
         }
     }
 }
