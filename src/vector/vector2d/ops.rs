@@ -40,14 +40,14 @@ impl Mul<Float> for Vector2D {
     type Output = Vector2D;
 
     fn mul(self, rhs: Float) -> Self::Output {
-        Self::new(self.x.clone() * rhs, self.y.clone() * rhs)
+        Self::new(self.x.clone() * rhs.clone(), self.y.clone() * rhs.clone())
     }
 }
 
 impl MulAssign<Float> for Vector2D {
     fn mul_assign(&mut self, rhs: Float) {
-        self.x *= rhs;
-        self.y *= rhs;
+        self.x *= rhs.clone();
+        self.y *= rhs.clone();
     }
 }
 

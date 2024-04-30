@@ -50,15 +50,15 @@ impl Mul<Float> for Vector3D {
     type Output = Vector3D;
 
     fn mul(self, rhs: Float) -> Self::Output {
-        Self::new(self.x.clone() * rhs, self.y.clone() * rhs, self.z.clone() * rhs)
+        Self::new(self.x.clone() * rhs.clone(), self.y.clone() * rhs.clone(), self.z.clone() * rhs.clone())
     }
 }
 
 impl MulAssign<Float> for Vector3D {
     fn mul_assign(&mut self, rhs: Float) {
-        self.x *= rhs;
-        self.y *= rhs;
-        self.z *= rhs;
+        self.x *= rhs.clone();
+        self.y *= rhs.clone();
+        self.z *= rhs.clone();
     }
 }
 
