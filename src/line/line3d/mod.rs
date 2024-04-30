@@ -13,6 +13,7 @@ pub struct Line3D {
 }
 
 impl Line3D {
+    #[allow(dead_code)]
     pub fn new(support_vector: Vector3D, directional_vector: Vector3D) -> Self {
         Self { support_vector, directional_vector }
     }
