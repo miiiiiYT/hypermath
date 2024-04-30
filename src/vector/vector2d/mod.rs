@@ -71,6 +71,12 @@ impl TryFrom<Vec<f64>> for Vector2D {
     }
 }
 
+impl Default for Vector2D {
+    fn default() -> Self {
+        Self::from_f64(0.0, 0.0)
+    }
+}
+
 impl Eq for Vector2D {}
 
 #[cfg(test)]

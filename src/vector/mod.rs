@@ -20,6 +20,7 @@ pub trait Vector: Sized
     + Clone
     + Display
     + Debug
+    + Default
 {
     fn length(&self) -> Float;
     fn as_vec(&self) -> Vec<Float>;

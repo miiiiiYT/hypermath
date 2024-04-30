@@ -47,4 +47,10 @@ impl Display for Point3D {
     }
 }
 
+impl Default for Point3D {
+    fn default() -> Self {
+        Self::from_f64(0.0, 0.0, 0.0)
+    }
+}
+
 impl Eq for Point3D {}

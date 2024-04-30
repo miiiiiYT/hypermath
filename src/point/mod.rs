@@ -23,6 +23,7 @@ pub trait Point: Sized
     + Eq
     + Display
     + Debug
+    + Default
     + ToPositionVector
 {
     /// Returns the distance between `self` and `other` as a `Float`.

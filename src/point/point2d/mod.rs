@@ -45,4 +45,10 @@ impl Display for Point2D {
     }
 }
 
+impl Default for Point2D {
+    fn default() -> Self {
+        Self::from_f64(0.0, 0.0)
+    }
+}
+
 impl Eq for Point2D {}
