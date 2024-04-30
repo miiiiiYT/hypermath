@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use rug::Float;
 
-use crate::{vector::Vector2D, F64_PRECISION};
+use crate::F64_PRECISION;
 
 mod ops;
 
@@ -14,7 +14,7 @@ mod ops;
 /// 
 /// // `Point2D::from_f64()` is used here instead of `new()`, as `new()` takes `rug::Float` as arguments.
 /// // To make your code more readable, please use `from_f64()` where you're able to.
-/// let point: Point2D = Point2D::from_f64(3.141, 1,41423);
+/// let point: Point2D = Point2D::from_f64(3.141, 1.41423);
 /// println!("{}", point);
 /// ```
 /// Prints `(3.1410000000000000, 1.1414230000000001)`
@@ -36,22 +36,6 @@ impl Point2D {
             y: Float::with_val(F64_PRECISION, y),
             _priv: ()
         }
-    }
-
-    /// Taking two `Point2D`s as reference and returning a resulting vector.
-    pub fn create_vector2d(point: &Self, other: &Self) -> Vector2D {
-        Vector2D::new(
-            other.x.clone() - point.x.clone(),
-            other.y.clone() - point.y.clone(),
-        )
-    }
-
-    /// Creating a vector from `self` to `other`, consuming both.
-    pub fn create_vector2d_self(self, other: Self) -> Vector2D {
-        Vector2D::new(
-            other.x - self.x,
-            other.y - self.y,
-        )
     }
 }
 

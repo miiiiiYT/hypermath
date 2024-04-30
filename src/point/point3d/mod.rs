@@ -4,7 +4,7 @@ use std::fmt::Display;
 
 use rug::Float;
 
-use crate::{vector::Vector3D, F64_PRECISION};
+use crate::F64_PRECISION;
 
 /// A struct describing a geometrical Point in 3D space.
 /// # Examples
@@ -38,14 +38,6 @@ impl Point3D {
             z: Float::with_val(F64_PRECISION, z),
             _priv: (),
         }
-    }
-
-    pub fn create_vector3d(point: Self, other: Self) -> Vector3D {
-        Vector3D::new(
-            other.x - point.x,
-            other.y - point.y,
-            other.z - point.z,
-        )
     }
 }
 

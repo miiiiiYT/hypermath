@@ -2,7 +2,7 @@ use std::{fmt::Display, io::ErrorKind};
 
 use rug::{ops::Pow, Float};
 
-use crate::F64_PRECISION;
+use crate::{point::Point2D, F64_PRECISION};
 
 use super::Vector;
 
@@ -31,6 +31,13 @@ impl Vector2D {
         }
 
         Ok(Self { x: Float::with_val(F64_PRECISION, vec[0]), y: Float::with_val(F64_PRECISION, vec[1]), _priv: () })
+    }
+
+    pub fn from_points(point: Point2D, other: Point2D) -> Self {
+        Self::new(
+            other.x - point.x,
+            other.y - point.y,
+        )
     }
 }
 

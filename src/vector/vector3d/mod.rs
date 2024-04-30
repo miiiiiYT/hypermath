@@ -2,7 +2,7 @@ use std::{fmt::Display, io::ErrorKind};
 
 use rug::{ops::Pow, Float};
 
-use crate::F64_PRECISION;
+use crate::{point::Point3D, F64_PRECISION};
 
 use super::Vector;
 
@@ -42,6 +42,14 @@ impl Vector3D {
             z: Float::with_val(F64_PRECISION, vec[2]),
             _priv: ()
         })
+    }
+
+    pub fn from_points(point: Point3D, other: Point3D) -> Self {
+        Self::new(
+            other.x - point.x,
+            other.y - point.y,
+            other.z - point.z,
+        )
     }
 }
 
