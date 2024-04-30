@@ -2,7 +2,7 @@ use std::ops::{Add, AddAssign, Sub, SubAssign};
 
 use rug::Float;
 
-use crate::vector::{CrossProduct, DotProduct};
+use crate::{point::Point3D, vector::{CrossProduct, DotProduct, ToPoint}};
 
 use super::Vector3D;
 
@@ -65,5 +65,13 @@ impl CrossProduct for Vector3D {
         let y = (self.z.clone() * rhs.x.clone()) - (self.x.clone() * rhs.z.clone());
         let z = (self.x.clone() * rhs.y.clone()) - (self.y.clone() * rhs.x.clone());
         Vector3D::new(x, y, z)
+    }
+}
+
+impl ToPoint for Vector3D {
+    type Point = Point3D;
+
+    fn to_point(&self, starting_point: Self::Point) -> Self::Point {
+        Point3D::new(self.x.clone() + starting_point.x, self.y.clone() + starting_point.y, self.z.clone() + starting_point.z)
     }
 }

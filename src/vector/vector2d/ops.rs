@@ -2,7 +2,7 @@ use std::ops::{Add, AddAssign, Sub, SubAssign};
 
 use rug::Float;
 
-use crate::vector::{CrossProduct, DotProduct};
+use crate::{point::Point2D, vector::{CrossProduct, DotProduct, ToPoint}};
 
 use super::Vector2D;
 
@@ -53,5 +53,13 @@ impl CrossProduct for Vector2D {
 
     fn cross_product(self, rhs: Self) -> Self::Output {
         (self.x * rhs.y) - (self.y * rhs.x)
+    }
+}
+
+impl ToPoint for Vector2D {
+    type Point = Point2D;
+
+    fn to_point(&self, starting_point: Self::Point) -> Self::Point {
+        Point2D::new(self.x.clone() + starting_point.x, self.y.clone() + starting_point.y)
     }
 }
